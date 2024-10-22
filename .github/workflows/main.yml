@@ -32,13 +32,16 @@ jobs:
         terraform_version: 1.0.0
 
     - name: Initialize Terraform
+      working-directory: tf
       run: terraform init
 
     - name: Plan Terraform changes
+      working-directory: tf
       run: terraform plan -out=tfplan
 
     # You might implement a manual approval step here
     - name: Apply Terraform changes
+      working-directory: tf
       run: terraform apply --auto-approve
 
     - name: Clean up
